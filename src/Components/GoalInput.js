@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, TextInput, View, Button, Modal } from 'react-native';
+import { StyleSheet, TextInput, View, Button, Alert } from 'react-native';
 
-const GoalInput = ({ enteredGoal, setEnteredGoal }) => {
+const GoalInput = ({ enteredGoal, setEnteredGoal, setCourseGoals }) => {
     const [isAddMode, setIsAddMode] = useState(false);
 
     const goalInputHandler = (enteredText) => {
@@ -13,25 +13,26 @@ const GoalInput = ({ enteredGoal, setEnteredGoal }) => {
             Alert.alert('Error', 'Please enter a goal', [{text: 'Okay', style: 'destructive'}]);
             return;
         }
+        // This is the best way to update state when it depends on the previous state
+        // as it guarantees that you're always working with the latest state snapshot
+        // and not with a state snapshot that might be outdated
         setCourseGoals(currentGoals => [...currentGoals, enteredGoal]);
         setEnteredGoal('');
     };
     
     return (
-        <Modal visible={isAddMode} animationType="slide">
-            <View style={styles.inputContainer}>
-                <TextInput
-                    placeholder="Your Course Goal"
-                    style={styles.textInput}
-                    value={enteredGoal}
-                    onChangeText={goalInputHandler}
-                />
-                <Button
-                    title="Add Goals"
-                    onPress={addGoalHandler}
-                />
-            </View>
-        </Modal>
+        <View style={styles.inputContainer}>
+            <TextInput
+                placeholder="Your Course Goal"
+                style={styles.textInput}
+                value={enteredGoal}
+                onChangeText={goalInputHandler}
+            />
+            <Button
+                title="Add Goals"
+                onPress={addGoalHandler}
+            />
+        </View>
     );
 };
 
