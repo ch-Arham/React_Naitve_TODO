@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList, Alert } from 'react-native';
+import { GoalItem } from "./src/Components"
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState('');
@@ -13,8 +14,12 @@ export default function App() {
     // This is the best way to update state when it depends on the previous state
     // as it guarantees that you're always working with the latest state snapshot
     // and not with a state snapshot that might be outdated
+    if(!enteredGoal){
+      Alert.alert('Error', 'Please enter a goal', [{text: 'Okay', style: 'destructive'}]);
+      return;
+    }
     setCourseGoals(currentGoals => [...currentGoals, enteredGoal]);
-    // setEnteredGoal('');
+    setEnteredGoal('');
   };
 
   return (
@@ -46,9 +51,7 @@ export default function App() {
           data={courseGoals}
           keyExtractor={(item, index) => index.toString() + Math.random().toString()}
           renderItem={itemData => (
-            <View style={styles.goalItem}>
-              <Text style={styles.goalText}>{itemData.item}</Text>
-            </View>
+            <GoalItem text={itemData.item} />
           )}
         />
       </View>
