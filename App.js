@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList, Alert } from 'react-native';
+import { StyleSheet, View, Button, TextInput, FlatList } from 'react-native';
 import { GoalItem, GoalInput } from "./src/Components"
 
 export default function App() {
-  const [enteredGoal, setEnteredGoal] = useState('');
   const [courseGoals, setCourseGoals] = useState([]);
 
   return (
     <View style={styles.screen}>
-      <GoalInput enteredGoal={enteredGoal} setEnteredGoal={setEnteredGoal} setCourseGoals={setCourseGoals} />
+      <GoalInput setCourseGoals={setCourseGoals} />
       
       <View style={styles.goalsContainer}>
         <FlatList
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
+    backgroundColor: '#666',
   },
   goalsContainer: {
     flex: 5

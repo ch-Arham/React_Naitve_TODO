@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { StyleSheet, TextInput, View, Button, Alert } from 'react-native';
 
-const GoalInput = ({ enteredGoal, setEnteredGoal, setCourseGoals }) => {
-    const [isAddMode, setIsAddMode] = useState(false);
+const GoalInput = ({ setCourseGoals }) => {
+    const [enteredGoal, setEnteredGoal] = useState('');
 
     const goalInputHandler = (enteredText) => {
         setEnteredGoal(enteredText);
