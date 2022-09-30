@@ -15,7 +15,7 @@ export default function App() {
           data={courseGoals}
           keyExtractor={(item, index) => index.toString() + Math.random().toString()}
           renderItem={itemData => (
-            <GoalItem text={itemData.item} />
+            <GoalItem text={itemData.item} setCourseGoals={setCourseGoals} />
           )}
         />
       </View>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
-    backgroundColor: '#666',
   },
   goalsContainer: {
     flex: 5
