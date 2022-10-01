@@ -13,9 +13,11 @@ export default function App() {
         <FlatList
           alwaysBounceVertical={false}
           data={courseGoals}
-          keyExtractor={(item, index) => index.toString() + Math.random().toString()}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={itemData => (
-            <GoalItem text={itemData.item} setCourseGoals={setCourseGoals} />
+            <GoalItem 
+              id={itemData.index.toString()}
+            text={itemData.item} setCourseGoals={setCourseGoals} />
           )}
         />
       </View>

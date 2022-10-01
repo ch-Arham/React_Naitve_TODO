@@ -1,13 +1,9 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
-const GoalItem = ({ text, setCourseGoals }) => {
-
-  const deleteGoalHandler = () => {
-    setCourseGoals(currentGoals => currentGoals.filter(goal => goal !== text));
-  };
+const GoalItem = ({ text, setCourseGoals, id }) => {
 
   return (
-    <Pressable onPress={deleteGoalHandler}>
+    <Pressable onPress={() => setCourseGoals(prevGoals => prevGoals.filter((goal, index) => index.toString() !== id))}>
       <View style={styles.goalItem}>
         <Text style={styles.goalText}>{text}</Text>
       </View>
