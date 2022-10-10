@@ -61,3 +61,6 @@ Adding ripple effect on press in handled by andriod_ripple on andriod but for io
         <Text style={styles.goalText}>{text}</Text>
       </Pressable>
     </View>
+
+
+ - **Custom Buttons are made via Pressable**
