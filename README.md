@@ -1,4 +1,4 @@
-- **Important Tips**
+##Important Tips
  - **CSS cascading and Inheritance effect does not work in react native as there wasnt any css to begin with.**
 
  - **Rounded border does not show in Iphone. We have to provide styles in
